@@ -1,0 +1,75 @@
+.toDo {
+    width: 350px;
+    height: 500px;
+    border: 1px solid black;
+    margin: 20px auto;
+    background: linear-gradient(rgb(92, 113, 131),rgb(116, 120, 126));
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.toDo__header {
+    width: 100%;
+    height: 10%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#fff;
+    background:rgb(51, 55, 58);
+}
+
+.toDo__main {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.toDo__input {
+    height: 30px;
+    width: 95%;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.toDo__field {
+    height: 350px;
+    width: 340px;
+    /* background-color: #fff; */
+    overflow-y:auto;
+    overflow-x: hidden;
+}
+
+.toDo__task {
+    width: 340px;
+    background-color: #FFF;
+    margin: 10px 0;
+}
+
+.toDo__checkBox {
+    width: 15px;
+    height: 15px;
+
+}
+
+.toDo__goal {
+   font-size:  24px;
+}
+
+.toDo__goal.active {
+    text-decoration: line-through ;
+} 
+
+.clearBtn {
+    width: 340px;
+    height: 35px;
+}
