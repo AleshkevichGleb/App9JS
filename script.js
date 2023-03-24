@@ -31,11 +31,12 @@ const drawGoals = () => {
             tasks = document.querySelectorAll('.toDo__task');
             checkBoxes = document.querySelectorAll('.toDo__checkBox');
             spans = document.querySelectorAll('.toDo__goal');
+
             crossOutTheTarget();
-            editTarget();
+            editTarget(spans);
+            clearList();  
         }
-    }) 
-    clearList();   
+    })  
 }
   
 function crossOutTheTarget() {
@@ -53,13 +54,15 @@ function crossOutTheTarget() {
 }
 
 
-function editTarget() {
-    spans.forEach(elem => {
-        elem.addEventListener('dblclick', () => {
-            let edit = prompt('Type a new target', elem.innerHTML);
-            if(edit !== '')elem.innerHTML = edit;
+function editTarget(arr) {
+    for(let i = 0; i < arr.length; i++){
+        arr[i].addEventListener('dblclick', event => {
+            console.log(i);
+            let edit = prompt('Type a new target', event.target.innerHTML);
+            event.target.innerHTML = edit; 
         })
-    })
+        break;
+    }
 }
 
 function clearList(){
@@ -67,7 +70,7 @@ function clearList(){
     clearBtn.addEventListener('click', () => {
         tasks.forEach(elem => {
             elem.remove();
-        })
+        }) 
     })
 }
 
