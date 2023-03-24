@@ -3,7 +3,7 @@
     height: 500px;
     border: 1px solid black;
     margin: 20px auto;
-    background: linear-gradient(rgb(92, 113, 131),rgb(116, 120, 126));
+    background: linear-gradient(rgb(146, 163, 178),rgb(216, 216, 216));
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -44,25 +44,28 @@
 .toDo__field {
     height: 350px;
     width: 340px;
-    /* background-color: #fff; */
     overflow-y:auto;
     overflow-x: hidden;
 }
 
 .toDo__task {
-    width: 340px;
-    background-color: #FFF;
+    max-width: 340px;
     margin: 10px 0;
+    display: flex;
+    align-items: center;
 }
 
 .toDo__checkBox {
-    width: 15px;
-    height: 15px;
-
+    width: 20px;
+    height: 20px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 .toDo__goal {
-   font-size:  24px;
+    width: 320px;
+    font-size:  22px;
+    font-weight: 700;
+    text-align: center;
 }
 
 .toDo__goal.active {
@@ -72,4 +75,17 @@
 .clearBtn {
     width: 340px;
     height: 35px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    transition: .14s linear all;
+}
+
+.clearBtn:hover {
+    background-color: rgb(69, 62, 62);
+    color: #fff
+}
+
+.clearBtn:active {
+    transform: scale(.9);
 }

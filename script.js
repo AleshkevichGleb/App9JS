@@ -11,7 +11,7 @@ const drawGoals = () => {
     const field = document.querySelector('.toDo__field');
     
     input.addEventListener('keydown', event => {
-        if(event.keyCode === 13 && event.target.value !== ""){ 
+        if(event.keyCode === 13 && event.target.value !== ""){
             const task = document.createElement('div');
             task.className = 'toDo__task'
 
@@ -31,32 +31,36 @@ const drawGoals = () => {
             tasks = document.querySelectorAll('.toDo__task');
             checkBoxes = document.querySelectorAll('.toDo__checkBox');
             spans = document.querySelectorAll('.toDo__goal');
-
-            for(let i = 0; i < checkBoxes.length; i++){
-                if(checkBoxes[i].checked) {
-                    spans[i].classList.add('active');
-                }else {
-                    spans[i].classList.remove('active');
-                }
-            }
-
-        checkBoxes.forEach(elem => {
-            elem.addEventListener('click', () =>{
-               for(let i = 0; i < checkBoxes.length; i++){
-                if(checkBoxes[i].checked) {
-                    spans[i].classList.add('active');
-                }else {
-                    spans[i].classList.remove('active');
-                }
-            }
-            })
-        })
+            crossOutTheTarget();
+            editTarget();
         }
-        
-    })  
+    }) 
     clearList();   
 }
   
+function crossOutTheTarget() {
+    checkBoxes.forEach(elem => {
+        elem.addEventListener('click', () =>{
+           for(let i = 0; i < checkBoxes.length; i++){
+            if(checkBoxes[i].checked) {
+                spans[i].classList.add('active');
+            }else {
+                spans[i].classList.remove('active');
+            }
+        }
+        })
+    })
+}
+
+
+function editTarget() {
+    spans.forEach(elem => {
+        elem.addEventListener('dblclick', () => {
+            let edit = prompt('Type a new target', elem.innerHTML);
+            if(edit !== '')elem.innerHTML = edit;
+        })
+    })
+}
 
 function clearList(){
     const clearBtn = document.querySelector('.clearBtn');
