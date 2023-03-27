@@ -1,12 +1,12 @@
 "use strict"
 
-
 let tasks;
 let checkBoxes;
 let spans;
 
 const drawGoals = () => {
     const input = document.querySelector(".toDo__input");
+    input.focus();
 
     const field = document.querySelector('.toDo__field');
     
@@ -23,6 +23,14 @@ const drawGoals = () => {
             span.innerHTML = event.target.value;
             span.classList.add('toDo__goal');
 
+            checkBox.addEventListener('click', () => {
+                if(checkBox.checked) {
+                    span.classList.add('active');
+                }else {
+                    span.classList.remove('active');
+                }
+            })
+
             task.append(checkBox, span);
             field.prepend(task);
     
@@ -32,34 +40,44 @@ const drawGoals = () => {
             checkBoxes = document.querySelectorAll('.toDo__checkBox');
             spans = document.querySelectorAll('.toDo__goal');
 
-            crossOutTheTarget();
             editTarget(spans);
             clearList();  
         }
     })  
 }
-  
-function crossOutTheTarget() {
-    checkBoxes.forEach(elem => {
-        elem.addEventListener('click', () =>{
-           for(let i = 0; i < checkBoxes.length; i++){
-            if(checkBoxes[i].checked) {
-                spans[i].classList.add('active');
-            }else {
-                spans[i].classList.remove('active');
-            }
-        }
-        })
-    })
-}
-
 
 function editTarget(arr) {
     for(let i = 0; i < arr.length; i++){
-        arr[i].addEventListener('dblclick', event => {
-            console.log(i);
-            let edit = prompt('Type a new target', event.target.innerHTML);
-            event.target.innerHTML = edit; 
+        arr[i].addEventListener('dblclick', () => {
+            const targetInput = document.createElement('input')
+            targetInput.className = 'toDo__targetInput';
+            targetInput.focus();
+            arr[i].replaceWith(targetInput)
+
+            targetInput.addEventListener('blur', () => {
+                if(targetInput.value !== '') {
+                    arr[i].innerHTML = targetInput.value;
+                    targetInput.replaceWith(arr[i]);
+                }else {
+                    targetInput.replaceWith(arr[i]);       
+                }
+            })
+
+            targetInput.addEventListener('keydown', event => {
+                if(event.keyCode === 13 && targetInput.value !== "") {
+                    arr[i].innerHTML = targetInput.value;
+                    targetInput.replaceWith(arr[i]);
+                }else if(targetInput.value === "" && event.keyCode === 13){
+                    targetInput.replaceWith(arr[i]);
+                }
+                    
+            })
+
+            setTimeout(() => {
+                if(targetInput.value === '') {
+                    targetInput.replaceWith(arr[i]); 
+                }
+            }, 6000);
         })
         break;
     }

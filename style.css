@@ -72,6 +72,17 @@
     text-decoration: line-through ;
 } 
 
+.toDo__targetInput {
+    height: 20px;
+    width: 95%;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 16px;
+}
+
 .clearBtn {
     width: 340px;
     height: 35px;
